@@ -1,9 +1,6 @@
 package com.iss.ssfassessment01.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,12 +53,6 @@ public class PizzaController {
         Contact ctc = pizzaService.findById(orderid);
         ctc.setOrderid(orderid);
         model.addAttribute("contact", ctc);
-        if (ctc == null) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body("");
-        }
         return "showContact";
     }
 }
